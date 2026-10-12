@@ -5,6 +5,8 @@
 
 using namespace std;
 
+const double PI = 3.14159265358979323846;
+
 vector<double> giaiHePhuongTrinh(vector<vector<double>> a , vector<double> b)
 // Khu Gauss - Jordan
 {
@@ -443,7 +445,7 @@ void bai7()
 
     for (int i = 0; i <= 25; i += 5)
     {
-        x.push_back(i * M_PI / 180.0);
+        x.push_back(i * PI / 180.0);
     }
 
     vector<double> y;
@@ -453,7 +455,7 @@ void bai7()
         y.push_back(sin(value));
     }
 
-    double target = 12.5 * M_PI / 180.0;
+    double target = 12.5 * PI / 180.0;
 
     double approximate = tinhNoiSuyLagrange(x , y , target);
     double exact = sin(target);
