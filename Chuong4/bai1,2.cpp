@@ -16,14 +16,14 @@ double f2(double x) {
 }
 
 // Cong thuc hinh thang hop thanh:
-// I_T = h/2 * [y_0 + y_n + 2*(y_1 + ... + y_(n-1))].
+// I_T = h * [(y_0 + y_n) / 2 + (y_1 + ... + y_(n-1))].
 // Hai dau mut chi tinh mot lan; cac nut ben trong co he so 2.
 double hinhThang(const double y[], double h) {
     double sum = 0.0;
     for (int i = 1; i < N; i++) {
         sum += y[i];
     }
-    return h / 2.0 * (y[0] + y[N] + 2.0 * sum);
+    return h * ((y[0] + y[N]) / 2.0 + sum);
 }
 
 // Cong thuc Simpson hop thanh, yeu cau N la so chan:
@@ -85,9 +85,9 @@ void giaiBai(const char* tenBai, const char* moTa, double (*f)(double)) {
     // Tinh va trinh bay tung thanh phan cua cong thuc hinh thang.
     const double ketQuaHinhThang = hinhThang(y, h);
     cout << "\n1. Cong thuc hinh thang:\n";
-    cout << "   I_T = h/2 * [f(x_0) + f(x_n) + 2*(f(x_1) + ... + f(x_(n-1)))]\n";
-    cout << "   I_T = " << h / 2.0 << " * [" << y[0] << " + " << y[N]
-         << " + 2*(";
+    cout << "   I_T = h * [(f(x_0) + f(x_n)) / 2 + f(x_1) + ... + f(x_(n-1))]\n";
+    cout << "   I_T = " << h << " * [(" << y[0] << " + " << y[N]
+         << ") / 2 + (";
     inTong(y, 1, N - 1, 1);
     cout << ")]\n";
     cout << "   I_T = " << ketQuaHinhThang << "\n";
